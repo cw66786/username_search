@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators, ValidatorFn, ValidationErrors, AbstractControl} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, ValidatorFn, ValidationErrors, AbstractControl, FormGroupDirective, NgForm} from '@angular/forms';
+
 
 @Component({
   selector: 'app-search-page',
@@ -8,27 +9,28 @@ import { FormBuilder, FormControl, FormGroup, Validators, ValidatorFn, Validatio
 })
 export class SearchPageComponent implements OnInit {
   searchForm!: FormGroup;
-  isValidUsername: any = false;
+  
+  validUsername = "^[a-zA-Z0-9-]*$";
+  
+  
 
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
-      searchFormControl: new FormControl('', [Validators.minLength(1), Validators.required ]),
+      searchFormControl: new FormControl('', [Validators.minLength(1), Validators.required, Validators.pattern(this.validUsername)]),
   
-     
-    },{validators: this.checkValid});    
-  }
-
-  
-
-
-  checkValid: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => { 
+      
+    });  
     
-    const validUsername = group.get('searchInfo')?.value;
-    const regEx = "^[a-zA-Z0-9-]*$";
-
-    return  validUsername.match(regEx) ? { [this.isValidUsername]: true } : null;
   }
+
+  
+
+  
+  
+
 }
+
+

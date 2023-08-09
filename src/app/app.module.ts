@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {MatInputModule} from '@angular/material/input'; 
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatIconModule} from '@angular/material/icon'; 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +24,9 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
