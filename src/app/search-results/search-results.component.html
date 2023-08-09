@@ -1,1 +1,41 @@
-<p>search-results works!</p>
+<div id="wrapper" class="mat-app-background">
+    <div class="filter-wrapper">
+        <input
+        type="search"
+        matInput
+        placeholder="Filter Table"
+       [(ngModel)]="filterString"
+      />
+    </div>
+    <table mat-table [dataSource]="dataSource | filter: filterString " class="mat-elevation-z8" matSort>
+
+       
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+      
+       
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+          <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+        </ng-container>
+      
+        
+        <ng-container matColumnDef="profile">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Profile</th>
+          <td mat-cell *matCellDef="let row"><a href="{{row.profile}}" target="_blank">{{row.profile}}</a> </td>
+        </ng-container>
+      
+      
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <tr *matNoDataRow>
+            <td class="mat-cell" colspan="3">Nothing matching filter {{filter}}</td>
+        </tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[10,20,30]" aria-labels="select page of users"></mat-paginator>
+      
+</div>
