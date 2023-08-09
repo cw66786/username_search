@@ -1,0 +1,21 @@
+<div class="wrapper">
+    lskdjhfkajsdhfglkajsdhf
+<form class="search-form">
+    <mat-form-field class="search-bar">
+      <mat-label>Username Search</mat-label>
+      <input type="search" matInput formControlName ="searchFormControl" 
+             placeholder="Enter a Username">
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="searchForm.hasError('checkValid') && !searchForm.hasError('required')">
+        Please enter a valid Search containing only alphanumeric characters and/or hyphens.
+      </mat-error>
+      <mat-error *ngIf="searchForm.hasError('required')">
+        Search input is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button mat-fab color="primary" aria-label="search-button">
+        <mat-icon>search</mat-icon>
+      </button>
+  </form>
+  
+</div>
