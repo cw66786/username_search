@@ -28,6 +28,8 @@
       color="primary"
       aria-label="search-button"
       type="submit"
+      [disabled]="!searchForm.valid"
+      (click)="onSubmit()"
     >
       Search
     </button>

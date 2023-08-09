@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ValidatorFn, ValidationErrors, AbstractControl, FormGroupDirective, NgForm} from '@angular/forms';
-
+import { SearchService } from '../search.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-page',
@@ -10,12 +11,13 @@ import { FormBuilder, FormControl, FormGroup, Validators, ValidatorFn, Validatio
 export class SearchPageComponent implements OnInit {
   searchForm!: FormGroup;
   
-  validUsername = "^[a-zA-Z0-9-]*$";
+  validUsername = "^[-a-zA-Z0-9]*$";
+  
   
   
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private searchService: SearchService, private router: Router) { }
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
@@ -28,7 +30,11 @@ export class SearchPageComponent implements OnInit {
 
   
 
-  
+  onSubmit(){
+    const userInput = this.searchForm.get('searchFormControl')?.value;
+    this.searchService.getUserInput(userInput);
+    this.router.navigateByUrl('/results');
+  }
   
 
 }
