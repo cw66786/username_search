@@ -4,10 +4,10 @@
         type="search"
         matInput
         placeholder="Filter Table"
-       [(ngModel)]="filterString"
+       (keyup)="filter($event)"
       />
     </div>
-    <table mat-table [dataSource]="dataSource | filter: filterString " class="mat-elevation-z8" matSort>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
        
         <ng-container matColumnDef="id">
@@ -33,7 +33,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
         <tr *matNoDataRow>
-            <td class="mat-cell" colspan="3">Nothing matching filter {{filter}}</td>
+            <td class="mat-cell" colspan="3">Nothing matching filter {{filterString}}</td>
         </tr>
       </table>
       <mat-paginator [pageSizeOptions]="[10,20,30]" aria-labels="select page of users"></mat-paginator>

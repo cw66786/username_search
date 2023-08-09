@@ -23,7 +23,7 @@ export class SearchResultsComponent implements OnInit {
   users: any = [];
   dataSource!: MatTableDataSource<Results>;
   displayedColumns: string[] = ['id','username','profile'];
-  filter!: string;
+  filterString!: string;
 
   constructor(private searchService: SearchService) { }
 
@@ -41,6 +41,19 @@ export class SearchResultsComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }));
+  }
+
+  filter(event: Event){
+    setTimeout(()=>{
+      const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if(this.dataSource.paginator){
+      this.dataSource.paginator.firstPage();
+    }
+    },2000)
+    
+
   }
 
 }

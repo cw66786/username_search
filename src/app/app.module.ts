@@ -15,14 +15,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
-import { FilterPipe } from './filter.pipe';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchPageComponent,
     SearchResultsComponent,
-    FilterPipe
+    
   ],
   imports: [
     BrowserModule,

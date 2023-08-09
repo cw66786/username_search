@@ -24,6 +24,10 @@ table{
     height: 80vh;
 }
 
+td{
+    max-height: 2rem !important;
+}
+
 mat-paginator{
     width: 95vw;
 
